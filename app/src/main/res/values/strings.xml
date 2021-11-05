@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">NoteMe</string>
+    <string name="labelTaskName">Task Name</string>
+    <string name="labelDesc">Write Description here .....</string>
 </resources>
