@@ -4,9 +4,11 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Rokomari/NoteMe/app/src/main/res/drawable/bottom_nav_ic_color.xml" value="0.136" />
+        <entry key="..\:/Rokomari/NoteMe/app/src/main/res/drawable/menu_shape.xml" value="0.1" />
         <entry key="..\:/Rokomari/NoteMe/app/src/main/res/drawable/rounded_corner_btn.xml" value="0.136" />
         <entry key="..\:/Rokomari/NoteMe/app/src/main/res/layout/activity_add_task.xml" value="0.22" />
-        <entry key="..\:/Rokomari/NoteMe/app/src/main/res/layout/activity_main.xml" value="0.2" />
+        <entry key="..\:/Rokomari/NoteMe/app/src/main/res/layout/activity_edit_task.xml" value="0.2" />
+        <entry key="..\:/Rokomari/NoteMe/app/src/main/res/layout/activity_main.xml" value="0.33" />
         <entry key="..\:/Rokomari/NoteMe/app/src/main/res/layout/activity_splash.xml" value="0.171875" />
         <entry key="..\:/Rokomari/NoteMe/app/src/main/res/layout/activity_task_details.xml" value="0.21" />
         <entry key="..\:/Rokomari/NoteMe/app/src/main/res/layout/content_main.xml" value="0.171875" />
@@ -17,6 +19,11 @@
         <entry key="..\:/Rokomari/NoteMe/app/src/main/res/layout/fragment_open.xml" value="0.171875" />
         <entry key="..\:/Rokomari/NoteMe/app/src/main/res/layout/fragment_test.xml" value="0.171875" />
         <entry key="..\:/Rokomari/NoteMe/app/src/main/res/layout/item_task_list.xml" value="0.171875" />
+        <entry key="..\:/Rokomari/NoteMe/app/src/main/res/layout/layout_dialog.xml" value="0.25" />
+        <entry key="..\:/Rokomari/NoteMe/app/src/main/res/layout/layout_dialog_delete.xml" value="0.171875" />
+        <entry key="..\:/Rokomari/NoteMe/app/src/main/res/layout/layout_dialog_email.xml" value="0.171875" />
+        <entry key="..\:/Rokomari/NoteMe/app/src/main/res/layout/layout_dialog_phone.xml" value="0.171875" />
+        <entry key="..\:/Rokomari/NoteMe/app/src/main/res/layout/layout_dialog_url.xml" value="0.171875" />
         <entry key="..\:/Rokomari/NoteMe/app/src/main/res/layout/layout_floating.xml" value="0.171875" />
         <entry key="..\:/Rokomari/NoteMe/app/src/main/res/layout/select_dialog_item.xml" value="0.171875" />
         <entry key="..\:/Rokomari/NoteMe/app/src/main/res/menu/bottom_nav_menu.xml" value="0.171875" />

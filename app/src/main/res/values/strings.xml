@@ -4,4 +4,6 @@
     <string name="labelDesc">Write Description here .....</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="message_text">Task Saved \nSuccessfully</string>
+    <string name="msg_text_remove">Task Remove \nSuccessfully</string>
 </resources>

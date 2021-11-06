@@ -60,6 +60,10 @@ class AddTaskActivity : AppCompatActivity() {
                 return@setOnClickListener
             }
 
+            if (deadline.isEmpty()) {
+                CommonMethods.showMatDialog(this, "Warning", "deadline date can not be empty")
+                return@setOnClickListener
+            }
             if (status.isEmpty()) {
                 CommonMethods.showMatDialog(this, "Warning", "Select status")
                 return@setOnClickListener

@@ -45,5 +45,8 @@ class CommonMethods {
             val msgText: TextView = dialog.findViewById(R.id.message)!!
             msgText.text = message
         }
+
+
+
     }
 }

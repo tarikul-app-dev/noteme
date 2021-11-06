@@ -21,7 +21,7 @@ class MainActivity : AppCompatActivity() {
     fun initView() {
         openFragment(OpenFragment())
 
-
+        binding.bottomAppBar.itemIconTintList = null;
         binding.bottomAppBar.setOnNavigationItemSelectedListener {
             clearBackStack()
             var returnType = false

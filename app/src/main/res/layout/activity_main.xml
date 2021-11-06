@@ -30,8 +30,7 @@
         app:fabCradleRoundedCornerRadius="20dp"
         app:fabCradleVerticalOffset="30dp"
         app:itemTextColor="@color/white"
-        app:backgroundTint="@color/bottom_bg"
-        app:itemRippleColor="@color/white"
+        android:background="@drawable/menu_shape"
         app:menu="@menu/bottom_nav_menu"
         app:layout_constraintBottom_toBottomOf="parent"
         />

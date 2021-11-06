@@ -68,7 +68,7 @@ class DoneFragment : Fragment() ,AllTaskAdapter.OnItemClickListener {
     }
 
     override fun onItemClick(
-        itemId: Int,
+        itemId: String,
         name: String,
         createAt: String,
         status: String,
@@ -76,7 +76,7 @@ class DoneFragment : Fragment() ,AllTaskAdapter.OnItemClickListener {
         deadline: String
     ) {
         val intent = Intent(requireActivity(),TaskDetailsActivity::class.java)
-        intent.putExtra("id",id)
+        intent.putExtra("id",itemId)
         intent.putExtra("name",name)
         intent.putExtra("create_at",createAt)
         intent.putExtra("status",status)
@@ -84,6 +84,10 @@ class DoneFragment : Fragment() ,AllTaskAdapter.OnItemClickListener {
         intent.putExtra("deadline",deadline)
         startActivity(intent)
 
+    }
+
+    override fun onClickDeleteItem(itemId: Int) {
+        viewModel.deleteItemById(itemId,requireActivity())
     }
 
 }

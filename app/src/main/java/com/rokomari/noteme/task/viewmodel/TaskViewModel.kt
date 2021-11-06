@@ -1,23 +1,24 @@
 package com.rokomari.noteme.task.viewmodel
 
-import android.R
 import android.app.Activity
 import android.app.Application
 import android.app.DatePickerDialog
 import android.content.Context
+import android.content.Intent
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.view.View
-import android.widget.Button
 import android.widget.TextView
-import androidx.core.content.ContextCompat
+import android.widget.Toast
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
-import cn.pedant.SweetAlert.SweetAlertDialog
+import com.google.android.material.button.MaterialButton
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.snackbar.Snackbar
+import com.rokomari.noteme.MainActivity
+import com.rokomari.noteme.R
 import com.rokomari.noteme.task.data.TaskDatabase
 import com.rokomari.noteme.task.model.TaskModel
-import com.rokomari.noteme.task.view.TaskDetailsActivity
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
@@ -39,35 +40,88 @@ class TaskViewModel(application: Application) : AndroidViewModel(application) {
 
             withContext(Dispatchers.Main) {
                 if (result > 0) {
-                    showSuccessDialog(activity)
+                    dialog(activity)
                 } else {
-                    showErrorDialog(activity)
+                    Toast.makeText(activity,"Failed",Toast.LENGTH_LONG).show()
                 }
             }
         }
 
     }
 
+    fun updateTask(id: String,
+                   name: String,
+                   description: String,
+                   create_at: String,
+                   deadline: String,
+                   status: String,
+                   email: String,
+                   phone: String,
+                   url: String,activity: Activity) {
+        var result: Int = -1
+        GlobalScope.launch(Dispatchers.IO) {
+            result = db.taskDao().updateTask(id,name,description,create_at,deadline,status,email,phone,url)
 
+            withContext(Dispatchers.Main) {
 
-    fun showSuccessDialog(activity: Activity) {
-        SweetAlertDialog(activity, SweetAlertDialog.SUCCESS_TYPE)
-            .setTitleText("Task Saved")
-            .setContentText("Successfully")
-            .setConfirmClickListener(SweetAlertDialog.OnSweetClickListener {
-                activity.finish()
-            })
-            .show()
+                if (result > 0) {
+                    dialog(activity)
+                } else {
+                    Toast.makeText(activity,"Failed",Toast.LENGTH_LONG).show()
+                }
+
+            }
+        }
 
     }
 
-    fun showErrorDialog(context: Context) {
-        SweetAlertDialog(context, SweetAlertDialog.ERROR_TYPE)
-            .setTitleText("Oops...")
-            .setContentText("Something went wrong!")
-            .show()
+    fun deleteItemById(itemId: Int, activity: Activity) {
+        var result: Int = -1
+        GlobalScope.launch(Dispatchers.IO) {
+            result = db.taskDao().deleteBYItemId(itemId)
+            withContext(Dispatchers.Main) {
+                if (result > 0) {
+                    dialogRemove(activity)
+                } else {
+                    Toast.makeText(activity,"Failed",Toast.LENGTH_LONG).show()
+                }
+
+            }
+        }
+
     }
 
+    fun dialog(
+        activity: Activity
+    ) {
+        val dialog = MaterialAlertDialogBuilder(activity)
+            .setView(R.layout.layout_dialog)
+            .show()
+
+        val okBtn: MaterialButton = dialog.findViewById(R.id.okBtnId)!!
+        okBtn.setOnClickListener {
+            activity.finish()
+            val intent = Intent(activity, MainActivity::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+            activity.startActivity(intent)
+        }
+
+    }
+
+    fun dialogRemove(
+        activity: Activity
+    ) {
+        val dialog = MaterialAlertDialogBuilder(activity)
+            .setView(R.layout.layout_dialog_delete)
+            .show()
+
+        val okBtn: MaterialButton = dialog.findViewById(R.id.okBtnId)!!
+        okBtn.setOnClickListener {
+
+            dialog.dismiss()
+        }
+
+    }
 
     fun showDobDatePicker(context: Context, dateTvId: TextView, dafDate: String) {
         val c = Calendar.getInstance()

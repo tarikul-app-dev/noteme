@@ -97,6 +97,7 @@
             android:paddingBottom="10dp"
             >
             <ImageView
+                android:id="@+id/edtTaskId"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:background="@drawable/ic_edit_task"
@@ -104,6 +105,7 @@
                 />
 
             <ImageView
+                android:id="@+id/deleteId"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:background="@drawable/ic_delete"
