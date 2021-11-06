@@ -117,8 +117,10 @@ class TaskViewModel(application: Application) : AndroidViewModel(application) {
 
         val okBtn: MaterialButton = dialog.findViewById(R.id.okBtnId)!!
         okBtn.setOnClickListener {
-
-            dialog.dismiss()
+            activity.finish()
+            val intent = Intent(activity, MainActivity::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+            activity.startActivity(intent)
         }
 
     }
