@@ -14,4 +14,8 @@
     <color name="bottom_bg">#FFBD96</color>
     <color name="toolbar">#EBEBEB</color>
     <color name="buttonColor">#ED6415</color>
+
+    <color name="blue_primary">#050073</color>
+    <color name="blue_secondary">#3C3892</color>
+    <color name="blue_third">#7471B1</color>
 </resources>

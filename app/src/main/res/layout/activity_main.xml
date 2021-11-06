@@ -7,16 +7,33 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".MainActivity">
+
     <FrameLayout
-        android:id="@+id/container"
+        android:id="@+id/homeFrameID"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginBottom="60dp"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
-     <include
-         android:id="@+id/inCludeLayoutId"
-         layout="@layout/content_main"
-         />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/bottomAppBar"
+        />
+
+
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomAppBar"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:layout_gravity="bottom"
+        app:fabCradleMargin="0dp"
+        app:fabAlignmentMode="end"
+        app:fabCradleRoundedCornerRadius="20dp"
+        app:fabCradleVerticalOffset="30dp"
+        app:itemTextColor="@color/white"
+        app:backgroundTint="@color/bottom_bg"
+        app:itemRippleColor="@color/white"
+        app:menu="@menu/bottom_nav_menu"
+        app:layout_constraintBottom_toBottomOf="parent"
+        />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

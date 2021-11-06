@@ -6,33 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/white"
    >
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/bottomAppBar"
-        android:layout_width="match_parent"
-        android:layout_height="80dp"
-        android:layout_gravity="bottom"
-        app:fabCradleMargin="0dp"
-        app:fabAlignmentMode="end"
-        app:fabCradleRoundedCornerRadius="20dp"
-        app:fabCradleVerticalOffset="30dp"
-        app:itemTextColor="@color/white"
-        app:backgroundTint="@color/bottom_bg"
-        app:itemRippleColor="@color/white"
-        app:menu="@menu/bottom_nav_menu" />
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/addTaskId"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:backgroundTint="#ED6415"
-        app:layout_anchor="@id/bottomAppBar"
-        app:srcCompat="@drawable/ic_plus_math"
-        app:tint="@color/white"
-        app:layout_anchorGravity="end"
-        android:elevation="0dp"
-        android:layout_marginBottom="100dp"
-        android:layout_marginRight="15dp"
-        app:elevation="0dp"
-        app:borderWidth="0dp"
-        />
+
+
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

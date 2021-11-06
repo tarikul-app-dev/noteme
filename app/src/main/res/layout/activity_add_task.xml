@@ -20,7 +20,7 @@
 
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/taskNameId"
+        android:id="@+id/nameILId"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="20dp"
@@ -31,6 +31,7 @@
         >
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/nameIEId"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/labelTaskName"
@@ -40,7 +41,7 @@
 
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/descriptionId"
+        android:id="@+id/descriptionILId"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
 
@@ -48,10 +49,11 @@
         android:layout_marginTop="30dp"
         app:errorEnabled="true"
         app:hintEnabled="false"
-        app:layout_constraintTop_toBottomOf="@+id/taskNameId"
+        app:layout_constraintTop_toBottomOf="@+id/nameILId"
         >
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/descriptionIEId"
             android:layout_width="match_parent"
             android:layout_height="100dp"
             android:hint="@string/labelDesc"
@@ -69,8 +71,8 @@
         android:textColor="#000000"
         android:layout_marginTop="30dp"
         android:layout_marginLeft="10dp"
-        app:layout_constraintStart_toStartOf="@+id/descriptionId"
-        app:layout_constraintTop_toBottomOf="@+id/descriptionId"
+        app:layout_constraintStart_toStartOf="@+id/descriptionILId"
+        app:layout_constraintTop_toBottomOf="@+id/descriptionILId"
         />
 
     <TextView
@@ -83,7 +85,7 @@
         android:layout_marginLeft="10dp"
         android:layout_marginTop="30dp"
         app:layout_constraintStart_toEndOf="@+id/deadlineId"
-        app:layout_constraintTop_toBottomOf="@+id/descriptionId"
+        app:layout_constraintTop_toBottomOf="@+id/descriptionILId"
         />
 
     <ImageView
@@ -94,7 +96,7 @@
         app:layout_constraintStart_toEndOf="@+id/dateId"
         android:layout_marginLeft="20dp"
         android:layout_marginTop="20dp"
-        app:layout_constraintTop_toBottomOf="@+id/descriptionId"
+        app:layout_constraintTop_toBottomOf="@+id/descriptionILId"
         />
 
 
@@ -108,7 +110,7 @@
         android:textColor="#000000"
         android:layout_marginTop="30dp"
         android:layout_marginLeft="10dp"
-        app:layout_constraintStart_toStartOf="@+id/descriptionId"
+        app:layout_constraintStart_toStartOf="@+id/descriptionILId"
         app:layout_constraintTop_toBottomOf="@+id/deadlineId"
         />
 
@@ -132,7 +134,7 @@
             android:background="@null"
             android:focusable="false"
             android:gravity="center"
-            android:hint="Open"
+            android:hint="Select"
             android:textColorHint="#ED6415" />
 
         <ImageView
@@ -234,6 +236,7 @@
     </LinearLayout>
 
     <com.google.android.material.button.MaterialButton
+        android:id="@+id/submitBtnId"
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:text="Submit"
@@ -242,6 +245,9 @@
         android:layout_marginTop="40dp"
         android:layout_marginHorizontal="40dp"
         android:backgroundTint="@color/buttonColor"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        android:textSize="22sp"
         app:layout_constraintTop_toBottomOf="@+id/linEmailId"
         />
 
