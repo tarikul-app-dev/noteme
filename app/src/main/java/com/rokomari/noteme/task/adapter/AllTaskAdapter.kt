@@ -10,7 +10,11 @@ import com.rokomari.noteme.R
 import com.rokomari.noteme.databinding.ItemTaskListBinding
 import com.rokomari.noteme.task.model.TaskModel
 
-class AllTaskAdapter(val context: Context, private val taskList: List<TaskModel>) :
+class AllTaskAdapter(
+    val context: Context,
+    private val taskList: List<TaskModel>,
+    val listener: OnItemClickListener
+) :
     RecyclerView.Adapter<AllTaskAdapter.ViewHolder>() {
 
 
@@ -32,9 +36,29 @@ class AllTaskAdapter(val context: Context, private val taskList: List<TaskModel>
             binding.deadlineValueId.text = taskItem.deadline
 
         }
+        holder.itemView.setOnClickListener {
+            val name = taskItem.name
+            val status = taskItem.status
+            val description = taskItem.description
+            val deadline = taskItem.deadline
+            val createAt = taskItem.create_at
+            listener.onItemClick(taskItem.id,name,createAt,status,description,deadline)
+        }
+
     }
 
     override fun getItemCount(): Int {
         return taskList.size
+    }
+
+    interface OnItemClickListener {
+        fun onItemClick(
+            itemId: Int,
+            name: String,
+            createAt: String,
+            status: String,
+            description: String,
+            deadline: String
+        )
     }
 }

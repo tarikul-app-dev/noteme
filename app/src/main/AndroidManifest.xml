@@ -10,8 +10,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.NoteMe"
-        tools:replace="android:icon"
-        >
+        tools:replace="android:icon">
+        <activity
+            android:name=".task.view.TaskDetailsActivity"
+            android:exported="false" />
         <activity
             android:name=".task.view.AddTaskActivity"
             android:exported="false" />

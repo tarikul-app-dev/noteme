@@ -15,7 +15,7 @@ import com.rokomari.noteme.task.adapter.AllTaskAdapter
 import com.rokomari.noteme.task.viewmodel.TaskViewModel
 
 
-class HomeFragment : Fragment() {
+class HomeFragment : Fragment(),AllTaskAdapter.OnItemClickListener {
     lateinit var binding: FragmentHomeBinding
     private lateinit var viewModel: TaskViewModel
     private var linearLayoutManager: LinearLayoutManager? = null
@@ -51,10 +51,31 @@ class HomeFragment : Fragment() {
 
     fun liveDataListener() {
         viewModel.allData.observe(requireActivity()) {
-            allTaskAdapter = AllTaskAdapter(requireActivity(), it)
+            allTaskAdapter = AllTaskAdapter(requireActivity(), it,this)
             binding.recyclerview.adapter = allTaskAdapter
 
         }
 
     }
+
+    override fun onItemClick(
+        itemId: Int,
+        name: String,
+        createAt: String,
+        status: String,
+        description: String,
+        deadline: String
+    ) {
+       val intent = Intent(requireActivity(),TaskDetailsActivity::class.java)
+        intent.putExtra("id",id)
+        intent.putExtra("name",name)
+        intent.putExtra("create_at",createAt)
+        intent.putExtra("status",status)
+        intent.putExtra("dsecription",description)
+        intent.putExtra("deadline",deadline)
+        startActivity(intent)
+
+    }
+
+
 }

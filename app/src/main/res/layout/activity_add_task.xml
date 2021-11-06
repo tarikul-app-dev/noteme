@@ -14,9 +14,20 @@
         android:background="@color/toolbar"
         app:popupTheme="@style/AppTheme.PopupOverlay"
         app:layout_constraintTop_toTopOf="parent"
-        app:title="Add Tasks"
-        android:layout_gravity="center"
-        />
+        >
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Add Task"
+                android:textSize="22sp"
+                android:layout_centerInParent="true"
+                />
+        </RelativeLayout>
+
+    </androidx.appcompat.widget.Toolbar>
 
 
     <com.google.android.material.textfield.TextInputLayout
@@ -154,8 +165,8 @@
         app:layout_constraintTop_toBottomOf="@+id/statusId"
         android:orientation="vertical"
         android:gravity="center"
-        android:layout_marginTop="30dp"
-        android:layout_marginLeft="10dp"
+        android:layout_marginTop="40dp"
+        app:layout_constraintEnd_toStartOf="@+id/linPhoneId"
         >
 
         <ImageView
@@ -185,7 +196,7 @@
         app:layout_constraintEnd_toStartOf="@+id/linUrlId"
         android:orientation="vertical"
         android:gravity="center"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="40dp"
         >
 
         <ImageView
@@ -214,7 +225,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         android:orientation="vertical"
         android:gravity="center"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="40dp"
         >
 
         <ImageView
