@@ -71,7 +71,7 @@ class EditTaskActivity : AppCompatActivity() {
             val description = binding.descriptionILId.editText!!.text.toString()
             val deadline = binding.dateId.text.toString()
             val status = binding.statusSpinnerId.text.toString()
-            val createAt = CommonMethods.getCurrentDate().toString()
+            //val createAt = CommonMethods.getCurrentDate().toString()
 
             if (taskName.isEmpty()) {
                 binding.nameIEId.error = "Field can not be empty"
@@ -102,7 +102,7 @@ class EditTaskActivity : AppCompatActivity() {
                 id.toString(),
                 name!!,
                 description,
-                createAt,
+                createDate!!,
                 deadline,
                 status,
                 email!!,
