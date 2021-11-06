@@ -1,11 +1,10 @@
 package com.rokomari.noteme
 
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import com.rokomari.noteme.databinding.ActivityMainBinding
-import com.rokomari.noteme.task.view.HomeFragment
+import com.rokomari.noteme.task.view.*
 import com.rokomari.noteme.utils.CommonMethods
 import com.rokomari.noteme.utils.OnClickAlertDialog
 
@@ -20,7 +19,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun initView() {
-        openFragment(HomeFragment())
+        openFragment(OpenFragment())
 
 
         binding.bottomAppBar.setOnNavigationItemSelectedListener {
@@ -28,20 +27,20 @@ class MainActivity : AppCompatActivity() {
             var returnType = false
             when (it.itemId) {
                 R.id.openId -> {
-                    openFragment(HomeFragment())
+                    openFragment(OpenFragment())
                     returnType = true
                 }
                 R.id.inprogressId -> {
-                    openFragment(HomeFragment())
+                    openFragment(InProgressFragment())
                     returnType = true
                 }
                 R.id.testId -> {
-                    openFragment(HomeFragment())
+                    openFragment(TestFragment())
                     returnType = true
                 }
 
                 R.id.doneId -> {
-                    openFragment(HomeFragment())
+                    openFragment(DoneFragment())
                     returnType = true
                 }
                 else -> returnType = false

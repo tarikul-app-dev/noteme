@@ -1,5 +1,6 @@
 package com.rokomari.noteme.task.adapter
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
@@ -12,12 +13,23 @@ import com.rokomari.noteme.task.model.TaskModel
 
 class AllTaskAdapter(
     val context: Context,
-    private val taskList: List<TaskModel>,
     val listener: OnItemClickListener
 ) :
     RecyclerView.Adapter<AllTaskAdapter.ViewHolder>() {
 
+    var taskList: MutableList<TaskModel> = mutableListOf()
 
+
+    @SuppressLint("NotifyDataSetChanged")
+    fun addData(task: MutableList<TaskModel>) {
+        taskList.addAll(task)
+        notifyDataSetChanged()
+    }
+    @SuppressLint("NotifyDataSetChanged")
+    fun clearData() {
+        taskList.clear()
+        notifyDataSetChanged()
+    }
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val binding = ItemTaskListBinding.bind(itemView)
     }
@@ -47,9 +59,11 @@ class AllTaskAdapter(
 
     }
 
+
     override fun getItemCount(): Int {
         return taskList.size
     }
+
 
     interface OnItemClickListener {
         fun onItemClick(
@@ -61,4 +75,5 @@ class AllTaskAdapter(
             deadline: String
         )
     }
+
 }

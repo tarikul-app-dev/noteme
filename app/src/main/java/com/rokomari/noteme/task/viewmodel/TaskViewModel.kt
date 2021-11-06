@@ -1,19 +1,23 @@
 package com.rokomari.noteme.task.viewmodel
 
 import android.R
+import android.app.Activity
 import android.app.Application
 import android.app.DatePickerDialog
 import android.content.Context
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
+import android.view.View
 import android.widget.Button
 import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import cn.pedant.SweetAlert.SweetAlertDialog
+import com.google.android.material.snackbar.Snackbar
 import com.rokomari.noteme.task.data.TaskDatabase
 import com.rokomari.noteme.task.model.TaskModel
+import com.rokomari.noteme.task.view.TaskDetailsActivity
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
@@ -28,26 +32,31 @@ class TaskViewModel(application: Application) : AndroidViewModel(application) {
     internal val allData: LiveData<List<TaskModel>> = db.taskDao().getAllData()
 
 
-    fun createTask(taskModel: TaskModel, context: Context) {
+    fun createTask(taskModel: TaskModel,activity: Activity) {
         var result: Long = -1
         GlobalScope.launch(Dispatchers.IO) {
             result = db.taskDao().createTask(taskModel)
 
             withContext(Dispatchers.Main) {
                 if (result > 0) {
-                    showSuccessDialog(context)
+                    showSuccessDialog(activity)
                 } else {
-                    showErrorDialog(context)
+                    showErrorDialog(activity)
                 }
             }
         }
 
     }
 
-    fun showSuccessDialog(context: Context) {
-        SweetAlertDialog(context, SweetAlertDialog.SUCCESS_TYPE)
+
+
+    fun showSuccessDialog(activity: Activity) {
+        SweetAlertDialog(activity, SweetAlertDialog.SUCCESS_TYPE)
             .setTitleText("Task Saved")
             .setContentText("Successfully")
+            .setConfirmClickListener(SweetAlertDialog.OnSweetClickListener {
+                activity.finish()
+            })
             .show()
 
     }

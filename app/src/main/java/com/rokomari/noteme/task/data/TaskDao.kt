@@ -19,8 +19,8 @@ interface TaskDao {
 //        @Query("DELETE FROM cart WHERE item_id = :itemId")
 //        fun deleteBYItemId(itemId: Int?)
 //
-//        @Query("SELECT EXISTS(SELECT * FROM cart WHERE item_id = :itemId And item_type = :itemType)")
-//        fun isExistSameItem(itemId: Int?,itemType:String): Boolean
+        @Query("SELECT * FROM noteMe WHERE  status = :status")
+        fun tasklistByStatus(status:String):LiveData<List<TaskModel>>
 //
 //
 //        @Query("DELETE FROM cart")

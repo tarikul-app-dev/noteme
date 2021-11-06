@@ -12,6 +12,9 @@
         android:theme="@style/Theme.NoteMe"
         tools:replace="android:icon">
         <activity
+            android:name=".task.view.EditTaskActivity"
+            android:exported="false" />
+        <activity
             android:name=".task.view.TaskDetailsActivity"
             android:exported="false" />
         <activity

@@ -8,15 +8,16 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.rokomari.noteme.R
-import com.rokomari.noteme.databinding.ActivityAddTaskBinding
-import com.rokomari.noteme.databinding.FragmentHomeBinding
+
+import com.rokomari.noteme.databinding.FragmentInProgressBinding
+
 import com.rokomari.noteme.task.adapter.AllTaskAdapter
+import com.rokomari.noteme.task.model.TaskModel
 import com.rokomari.noteme.task.viewmodel.TaskViewModel
 
 
-class HomeFragment : Fragment(),AllTaskAdapter.OnItemClickListener {
-    lateinit var binding: FragmentHomeBinding
+class InProgressFragment : Fragment() ,AllTaskAdapter.OnItemClickListener{
+    lateinit var binding: FragmentInProgressBinding
     private lateinit var viewModel: TaskViewModel
     private var linearLayoutManager: LinearLayoutManager? = null
     private var allTaskAdapter: AllTaskAdapter? = null
@@ -30,13 +31,15 @@ class HomeFragment : Fragment(),AllTaskAdapter.OnItemClickListener {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentHomeBinding.inflate(layoutInflater)
+        binding = FragmentInProgressBinding.inflate(layoutInflater)
 
         initView()
         return binding.root
     }
 
     fun initView() {
+        allTaskAdapter = AllTaskAdapter(requireActivity(),this)
+
         binding.addTaskId.setOnClickListener {
             startActivity(Intent(requireActivity(), AddTaskActivity::class.java))
         }
@@ -51,9 +54,16 @@ class HomeFragment : Fragment(),AllTaskAdapter.OnItemClickListener {
 
     fun liveDataListener() {
         viewModel.allData.observe(requireActivity()) {
-            allTaskAdapter = AllTaskAdapter(requireActivity(), it,this)
+            val openTaskList = mutableListOf<TaskModel>()
+            for (i in it){
+                if(i.status == "In-Progress") {
+                    val taskModel = TaskModel(i.id,i.name,i.description,i.create_at,i.deadline,i.status,i.email,i.phone,i.url)
+                    openTaskList.add(taskModel)
+                }
+            }
+            allTaskAdapter!!.clearData();
+            allTaskAdapter!!.addData(openTaskList)
             binding.recyclerview.adapter = allTaskAdapter
-
         }
 
     }
@@ -66,7 +76,7 @@ class HomeFragment : Fragment(),AllTaskAdapter.OnItemClickListener {
         description: String,
         deadline: String
     ) {
-       val intent = Intent(requireActivity(),TaskDetailsActivity::class.java)
+        val intent = Intent(requireActivity(),TaskDetailsActivity::class.java)
         intent.putExtra("id",id)
         intent.putExtra("name",name)
         intent.putExtra("create_at",createAt)
@@ -76,6 +86,4 @@ class HomeFragment : Fragment(),AllTaskAdapter.OnItemClickListener {
         startActivity(intent)
 
     }
-
-
 }
